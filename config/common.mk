@@ -306,3 +306,6 @@ include vendor/lineage/config/version.mk
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/lineage/config/partner_gms.mk
+
+# ArsenalsOS: AOS system service (arsenalsos boot jar)
+include vendor/arsenals/arsenalsos/config/common.mk
