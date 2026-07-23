@@ -23,6 +23,9 @@ ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
     LINEAGE_EXTRAVERSION :=
 endif
 
+# ArsenalsOS: force OFFICIAL buildtype by default
+LINEAGE_BUILDTYPE := OFFICIAL
+
 ifeq ($(LINEAGE_BUILDTYPE), UNOFFICIAL)
     ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
         LINEAGE_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
@@ -39,7 +42,7 @@ LINEAGE_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR)-$(LINEAGE_VERSION_SUFFIX)
 
 # LineageOS version properties
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.lineage.version=$(LINEAGE_VERSION) \
-    ro.lineage.display.version=$(LINEAGE_DISPLAY_VERSION) \
-    ro.lineage.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
-    ro.lineage.releasetype=$(LINEAGE_BUILDTYPE)
+    ro.arsenals.version=$(LINEAGE_VERSION) \
+    ro.arsenals.display.version=$(LINEAGE_DISPLAY_VERSION) \
+    ro.arsenals.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
+    ro.arsenals.releasetype=$(LINEAGE_BUILDTYPE)
