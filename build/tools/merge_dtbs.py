@@ -491,7 +491,10 @@ def parse_tech_dt_files(folder):
 				dtbs.append((dt.list_props('/__symbols__'), dt.list_props('/__fixups__'), filepath))
 	graph = create_adjacency(dtbs)
 	ts = graphlib.TopologicalSorter(graph)
-	order = list(ts.static_order())
+	try:
+		order = list(ts.static_order())
+	except graphlib.CycleError:
+		order = list(graph.keys())
 	devicetrees = []
 	for dt in order:
 		if dt: # Check the value is 'None'
